@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayNest - House Owner Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="brand-container">
+            <img src="logo.jpg" alt="StayNest Logo"> <!-- Replace with actual logo file -->
+            <h1>StayNest - House Owner Sign In</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="owners_register.html">House Owner Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="auth-container">
+            <h2>Sign In as House Owner</h2>
+            <form action="verify_owner.php" method="POST">
+                <label for="owner_email_signin">Email:</label>
+                <input type="email" id="owner_email_signin" name="owner_email_signin" required>
+
+                <label for="owner_password_signin">Password:</label>
+                <input type="password" id="owner_password_signin" name="owner_password_signin" required>
+
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+
+            <p>Don't have an account? <a href="owners_register.html">Register here</a></p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 StayNest. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayNest - Add House</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="brand-container">
+            <img src="logo.jpg" alt="StayNest Logo"> <!-- Replace with actual logo -->
+            <h1>StayNest - Add House Details</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="owners_dashboard.html">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="house-form">
+            <h2>Add Your House Details</h2>
+            <form action="upload_house.php" method="POST" enctype="multipart/form-data">
+                <label for="title">House Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="price">Price per Month (INR):</label>
+                <input type="number" id="price" name="price" min="1000" step="0.01" required>
+
+                <label for="house_type">Type of Room:</label>
+                <select id="house_type" name="house_type" required>
+                    <option value="private">Private Room</option>
+                    <option value="shared">Shared Room</option>
+                    <option value="entire">Entire House</option>
+                </select>
+
+                <label for="landmark">Nearby Landmark:</label>
+                <input type="text" id="landmark" name="landmark" required>
+
+                <label for="distance_from_landmark">Distance from Landmark (in km):</label>
+                <input type="number" id="distance_from_landmark" name="distance_from_landmark" min="0" step="0.1" required>
+
+                <!-- New Phone Number Input -->
+                <label for="phone">Owner's Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required>
+                <small>Format: 9876543210</small>
+
+                <label for="images">Upload House Images:</label>
+                <input type="file" id="images" name="images[]" multiple required>
+
+                <button type="submit" class="btn">Submit House Details</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 StayNest. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

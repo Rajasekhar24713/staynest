@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Homes - StayNest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <img src="logo.jpg" alt="StayNest Logo" style="width: 100px; height: auto;">
+        <h1>Find Your Perfect Stay</h1>
+    </header>
+
+    <form id="searchForm">
+        <label for="landmark">Enter Landmark:</label>
+        <input type="text" id="landmark" name="landmark" required>
+
+        <label for="distance">Enter Distance Range (km):</label>
+        <input type="number" id="distance" name="distance" min="0" required>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="houseResults"></div>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let landmark = document.getElementById("landmark").value;
+            let distance = document.getElementById("distance").value;
+
+            fetch(`search_house.php?landmark=${encodeURIComponent(landmark)}&distance=${distance}`)
+                .then(response => response.json())
+                .then(data => {
+                    let resultsContainer = document.getElementById("houseResults");
+                    resultsContainer.innerHTML = ""; // Clear previous results
+
+                    if (data.length === 0) {
+                        resultsContainer.innerHTML = "<p>No houses found within the specified range.</p>";
+                    } else {
+                        data.forEach(house => {
+                            let houseCard = `
+                                <div class="house-card" style="border: 1px solid #ddd; padding: 15px; margin: 10px;">
+                                    <h3>${house.title}</h3>
+                                    <p><strong>Location:</strong> ${house.location}</p>
+                                    <p><strong>Landmark:</strong> ${house.landmark}</p>
+                                    <p><strong>Distance:</strong> ${house.distance_from_landmark} km</p>
+                                    <p><strong>Price:</strong> ₹${house.price.toLocaleString()}</p>
+                                    <p><strong>Phone:</strong> ${house.phone}</p>
+                                </div>
+                            `;
+                            resultsContainer.innerHTML += houseCard;
+                        });
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>

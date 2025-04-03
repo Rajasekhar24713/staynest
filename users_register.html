@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayNest - User Registration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand-container">
+      <img src="logo.jpg" alt="StayNest Logo"> <!-- Replace with your actual logo file -->
+      <h1>StayNest - User Registration</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="users_signin.html">User Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="auth-container">
+      <h2>Register as a User</h2>
+      <form id="registrationForm">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+
+        <label for="user_email">Email:</label>
+        <input type="email" id="user_email" name="user_email" required>
+
+        <label for="user_password">Password:</label>
+        <input type="password" id="user_password" name="user_password" required>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 StayNest. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const fullName = document.getElementById("full_name").value;
+      const email = document.getElementById("user_email").value;
+      const password = document.getElementById("user_password").value;
+      
+      localStorage.setItem("user_full_name", fullName);
+      localStorage.setItem("user_email", email);
+      localStorage.setItem("user_password", password); // Normally, passwords should be encrypted!
+      
+      window.location.href = "users_dashboard.html";
+    });
+  </script>
+</body>
+</html>
